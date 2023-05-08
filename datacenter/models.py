@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from datetime import timedelta
 
 
 class Passcard(models.Model):
@@ -18,6 +20,21 @@ class Visit(models.Model):
     passcard = models.ForeignKey(Passcard, on_delete=models.CASCADE)
     entered_at = models.DateTimeField()
     leaved_at = models.DateTimeField(null=True)
+
+    def is_visit_long(self, minutes=60):
+        if self.leaved_at is None:
+            delta = timezone.now() - self.entered_at
+        else:
+            delta = self.leaved_at - self.entered_at
+        return 'НЕТ' if delta <= timedelta(minutes=minutes) else 'ДА'
+
+    def format_duration(self):
+        delta = str(timezone.now() - self.entered_at).split(':')
+        return f'{delta[0]}ч : {delta[1]}мин'
+
+    def get_duration(self):
+        delta = str(self.leaved_at - self.entered_at).split(':')
+        return f'{delta[0]}ч : {delta[1]}мин'
 
     def __str__(self):
         return '{user} entered at {entered} {leaved}'.format(
