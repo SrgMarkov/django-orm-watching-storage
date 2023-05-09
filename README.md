@@ -18,8 +18,12 @@ pip install -r requirements.txt
         'USER': 'guard',
         'PASSWORD': 'osim5',
 ```
+### Как запустить
 
-### Основные файлы
+Запускать в файле `main.py`, затем перейти по адресу [0.0.0.0:8000](http://0.0.0.0:8000/)
+
+
+### Основные файлы проекта
 - `models.py` модели данных и основные функции
 - `datacenter\active_passcards_view.py` список активных пропусков
 - `datacenter\passcard_info_view.py` список визитов по каждому сотруднику
