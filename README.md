@@ -9,18 +9,24 @@ Python3 должен быть уже установлен. Затем испол
 pip install -r requirements.txt
 ```
 
-### Подключение к базе данных в файле `settings.py`
+### Подключение к базе данных 
+
+в файле `.env` необходимо прописать данные для подключения
 ```
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'checkpoint.devman.org',
-        'PORT': '5434',
-        'NAME': 'checkpoint',
-        'USER': 'guard',
-        'PASSWORD': 'osim5',
+ENGINE=...
+HOST=...
+PORT=...
+NAME=...
+USER=...
+PASSWORD=...
 ```
 ### Как запустить
 
-Запускать в файле `main.py`, затем перейти по адресу [0.0.0.0:8000](http://0.0.0.0:8000/)
+Запускать запускать из командной строки 
+```
+python3 manage.py runserver 0.0.0.0:8000 
+```
+затем перейти по ссылке [0.0.0.0:8000](http://0.0.0.0:8000/)
 
 
 ### Основные файлы проекта
