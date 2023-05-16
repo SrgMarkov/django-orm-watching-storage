@@ -11,14 +11,9 @@ pip install -r requirements.txt
 
 ### Подключение к базе данных 
 
-в файле `.env` необходимо прописать данные для подключения
+в файле `.env` необходимо прописать данные для подключения, подставить данные вместо `USER`,`PASSWORD`,`HOST`,`PORT` и `NAME` в строке:
 ```
-ENGINE=...
-HOST=...
-PORT=...
-NAME=...
-USER=...
-PASSWORD=...
+postgis://USER:PASSWORD@HOST:PORT/NAME
 ```
 ### Как запустить
 
@@ -35,10 +30,17 @@ python3 manage.py runserver 0.0.0.0:8000
 ```
 DEBUG=True
 ```
-
+по умолчанию `DEBUG=False`
 
 ### Основные файлы проекта
 - `models.py` модели данных и основные функции
 - `datacenter\active_passcards_view.py` список активных пропусков
 - `datacenter\passcard_info_view.py` список визитов по каждому сотруднику
 - `datacenter\storage_information_view.py` список сотрудников, находящихся в хранилище в данный момент
+
+### Разрешенные хосты
+
+для обслуживания сайта на домене, отличным от `localhost` необходимо в файле `.env` добавить имя домена в строку через запятую:
+```
+ALLOWED_HOSTS=127.0.0.1,localhost,0.0.0.0
+```
